@@ -1,0 +1,194 @@
+.screenCard {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  min-height: 320px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  perspective: 1000px;
+  opacity: 0;
+  transform: scale(0.9) rotateY(-10deg);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.screenCard.revealed {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+}
+
+.screenCard.revealed:hover {
+  transform: translateY(-8px) rotateY(3deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), var(--glow-shadow);
+}
+
+.screenCard.revealed.active {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1) rotateY(0deg);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--highlight-text);
+}
+
+.timeDisplay {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin: 1rem 0;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.6);
+  transition: color 0.5s ease;
+  text-align: center;
+}
+
+.screenCard.revealed.active .timeDisplay {
+  color: #ffdd57;
+  animation: pulseTime 1.5s infinite ease-in-out;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex-grow: 1;
+  min-width: 80px;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3), var(--glow-shadow);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.btn:disabled {
+  background: var(--disabled-color);
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.btnStart {
+  background: var(--success-color);
+  color: var(--highlight-text);
+}
+
+.btnStart:hover:not(:disabled) {
+  background: #27ae60;
+  box-shadow: 0 8px 15px rgba(46, 204, 113, 0.4);
+}
+
+.btnStop {
+  background: var(--error-color);
+  color: var(--highlight-text);
+}
+
+.btnStop:hover:not(:disabled) {
+  background: #c0392b;
+  box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+.btnReset {
+  background: var(--secondary-color);
+  color: var(--highlight-text);
+}
+
+.btnReset:hover:not(:disabled) {
+  background: var(--primary-color);
+  box-shadow: 0 8px 15px rgba(142, 45, 226, 0.4);
+}
+
+.btnTimer {
+  background: #9b59b6;
+  color: var(--highlight-text);
+}
+
+.btnTimer:hover:not(:disabled) {
+  background: #8e44ad;
+  box-shadow: 0 8px 15px rgba(155, 89, 182, 0.4);
+}
+
+.costDisplay {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--highlight-text);
+  background-color: rgba(0, 255, 157, 0.1);
+  padding: 0.5rem;
+  border-radius: 5px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.costDisplay.visible {
+  opacity: 1;
+}
+
+.countdownDisplay {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffdd57;
+  margin: 0.5rem 0;
+  animation: pulseTime 1.5s infinite ease-in-out;
+  text-align: center;
+}
+
+@keyframes revealCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseTime {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}

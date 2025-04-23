@@ -1,0 +1,196 @@
+.timerModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.timerModalOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.timerModal {
+  background: var(--dark-bg);
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: var(--shadow), 0 0 20px rgba(142, 45, 226, 0.4);
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  direction: rtl;
+  color: var(--light-text);
+}
+
+.timerModalOverlay.active .timerModal {
+  transform: translateY(0) scale(1);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--light-text);
+  transition: color 0.3s, transform 0.3s;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.timerOptions {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--secondary-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.timerOption {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--light-text);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.timerOption:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timerOption.active {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--highlight-text);
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(142, 45, 226, 0.5);
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--light-text);
+  font-weight: 500;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--highlight-text);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+  outline: none;
+  caret-color: var(--accent-color);
+}
+
+.inputGroup input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.4);
+}
+
+.inputGroup input::-webkit-outer-spin-button,
+.inputGroup input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputGroup input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.calculatedTime {
+  margin-top: 1rem;
+  color: var(--accent-color);
+  font-size: 1rem;
+  background-color: rgba(0, 255, 157, 0.1);
+  padding: 0.8rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  min-width: 180px;
+}
+
+.btn:disabled {
+  background: var(--disabled-color);
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.btnPrimary {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--highlight-text);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3), var(--glow-shadow);
+}
+
+.btnPrimary:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.btnSecondary {
+  background: #34495e;
+  color: var(--highlight-text);
+  margin-right: 1rem;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: #2c3e50;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(52, 73, 94, 0.4);
+}

@@ -1,0 +1,71 @@
+.mainHeader {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: var(--box-shadow);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.rateInputArea, .rateDisplayArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rateInputArea input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  width: 100px;
+}
+
+.inputError {
+  border-color: var(--error-color) !important;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color var(--transition-speed);
+  position: relative;
+  overflow: hidden;
+}
+
+.btnPrimary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btnPrimary:hover {
+  background-color: #3e8e41;
+}
+
+.btnEdit {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btnEdit:hover {
+  background-color: #0b7dda;
+}
+
+.currentRateDisplay {
+  font-size: 1rem;
+}

@@ -1,0 +1,119 @@
+.confirmModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.confirmModalOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.confirmModal {
+  background: var(--dark-bg);
+  border: 1px solid var(--error-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: var(--shadow), 0 0 20px rgba(231, 76, 60, 0.4);
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  direction: rtl;
+  color: var(--light-text);
+  text-align: center;
+}
+
+.confirmModalOverlay.active .confirmModal {
+  transform: translateY(0) scale(1);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--light-text);
+  transition: color 0.3s, transform 0.3s;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.confirmMessage {
+  margin: 1.5rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--light-text);
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  min-width: 140px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.btnPrimary {
+  background: var(--error-color);
+  color: var(--highlight-text);
+}
+
+.btnPrimary:hover {
+  background: #c0392b;
+  box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+.btnSecondary {
+  background: #34495e;
+  color: var(--highlight-text);
+}
+
+.btnSecondary:hover {
+  background: #2c3e50;
+  box-shadow: 0 8px 15px rgba(52, 73, 94, 0.4);
+}
